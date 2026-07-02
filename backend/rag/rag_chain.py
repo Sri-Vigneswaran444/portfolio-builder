@@ -1,7 +1,7 @@
-from langchain_ollama import ChatOllama
+from langchain_groq import ChatGroq
+import os
 
 from backend.rag.retriever import PortfolioRetriever
-from backend.config import LLM_MODEL
 
 
 class PortfolioRAG:
@@ -10,9 +10,10 @@ class PortfolioRAG:
 
         self.retriever = PortfolioRetriever()
 
-        self.llm = ChatOllama(
-            model=LLM_MODEL,
-            temperature=0
+        self.llm = ChatGroq(
+            model="mixtral-8x7b-32768",
+            temperature=0,
+            api_key=os.getenv("GROQ_API_KEY")
         )
 
     def ask(self, question):
