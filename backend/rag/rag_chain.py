@@ -11,7 +11,7 @@ class PortfolioRAG:
         self.retriever = PortfolioRetriever()
 
         self.llm = ChatGroq(
-            model="mixtral-8x7b-32768",
+            model="llama-3.1-70b-versatile",
             temperature=0,
             api_key=os.getenv("GROQ_API_KEY")
         )
