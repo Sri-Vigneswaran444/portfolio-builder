@@ -13,7 +13,9 @@ export default function ChatBox() {
 
   // Auto-scroll to bottom of messages
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (messages.length > 0 || loading) {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
   }, [messages, loading]);
 
   return (
