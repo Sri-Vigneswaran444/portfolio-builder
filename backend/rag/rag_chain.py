@@ -1,0 +1,72 @@
+from langchain_ollama import ChatOllama
+
+from backend.rag.retriever import PortfolioRetriever
+from backend.config import LLM_MODEL
+
+
+class PortfolioRAG:
+
+    def __init__(self):
+
+        self.retriever = PortfolioRetriever()
+
+        self.llm = ChatOllama(
+            model=LLM_MODEL,
+            temperature=0
+        )
+
+    def ask(self, question):
+
+        # Retrieve relevant chunks
+        results = self.retriever.retrieve(question)
+
+        context = "\n\n".join(
+            results["documents"][0]
+        )
+
+        prompt = f"""
+You are Sri Vigneswaran's AI Portfolio Assistant.
+
+Answer ONLY from the supplied context.
+
+If the answer is unavailable,
+say:
+
+"I couldn't find that information in Sri Vigneswaran's portfolio."
+
+--------------------
+Context
+--------------------
+
+{context}
+
+--------------------
+Question
+--------------------
+
+{question}
+
+Answer:
+"""
+
+        response = self.llm.invoke(prompt)
+
+        return response.content
+
+
+if __name__ == "__main__":
+
+    rag = PortfolioRAG()
+
+    while True:
+
+        question = input("\nAsk : ")
+
+        if question.lower() == "exit":
+            break
+
+        answer = rag.ask(question)
+
+        print("\nAnswer\n")
+
+        print(answer)

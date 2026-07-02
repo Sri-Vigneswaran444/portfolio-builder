@@ -1,0 +1,61 @@
+frontend/
+│
+├── public/
+│   ├── favicon.ico
+│   ├── resume.pdf
+│   └── logo.png
+│
+├── src/
+│
+│   ├── assets/
+│   │   ├── images/
+│   │   ├── icons/
+│   │   └── animations/
+│   │
+│   ├── components/
+│   │
+│   │   ├── layout/
+│   │   │   ├── Navbar.tsx
+│   │   │   ├── Footer.tsx
+│   │   │   └── Background.tsx
+│   │   │
+│   │   ├── hero/
+│   │   │   └── Hero.tsx
+│   │   │
+│   │   ├── chat/
+│   │   │   ├── ChatBox.tsx
+│   │   │   ├── ChatInput.tsx
+│   │   │   ├── Message.tsx
+│   │   │   ├── SuggestedQuestions.tsx
+│   │   │   ├── TypingIndicator.tsx
+│   │   │   └── SourceCard.tsx
+│   │   │
+│   │   └── common/
+│   │       ├── Button.tsx
+│   │       ├── Card.tsx
+│   │       ├── Loader.tsx
+│   │       └── Badge.tsx
+│   │
+│   ├── pages/
+│   │   └── Home.tsx
+│   │
+│   ├── services/
+│   │   └── api.ts
+│   │
+│   ├── hooks/
+│   │   └── useChat.ts
+│   │
+│   ├── types/
+│   │   └── chat.ts
+│   │
+│   ├── styles/
+│   │   └── globals.css
+│   │
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── vite-env.d.ts
+│
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+└── eslint.config.js
